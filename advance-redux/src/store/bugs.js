@@ -15,6 +15,15 @@ const initialState = {
 }
 
 const bugsReducer = createReducer(initialState, {
+
+    bugRequested: (state, action) => {
+        console.log('Loading.....');
+        state.loading = true;
+    },
+    bugRequestedFailed: (state, action) => {
+        console.log('Loading.....');
+        state.loading = false;
+    },
     [bugAdded.type]: (state, action) => {
         state.list.push(...action.payload);
     },

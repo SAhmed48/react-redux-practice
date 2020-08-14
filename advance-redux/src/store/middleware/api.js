@@ -3,9 +3,13 @@ import * as apiActions from '../api';
 
 export const api = ({ dispatch }) => next => async action => {
     if(action.type !== apiActions.apiCallStart.type) return next(action);
+
+    const {url, onStart, onSuccess, onError} = action.payload;
+    // loader 
+    if(onStart) dispatch({ type: 'bugRequested' });
+
     next(action);
-    
-    const {url, onSuccess, onError} = action.payload;
+
     try {
         const response = await axios.request({
             baseURL: 'http://localhost:9000',
@@ -17,9 +21,9 @@ export const api = ({ dispatch }) => next => async action => {
         if(onSuccess) dispatch({type: onSuccess, payload: response.data });
     } catch (error) {
         // general Error 
-        dispatch(apiActions.apiCallError(error));
+        dispatch(apiActions.apiCallError(error.message));
         // Specific error case
-        if(onError) dispatch({type: onError, payload: error });
+        if(onError) dispatch({type: onError, payload: error.message });
     }
 
 };

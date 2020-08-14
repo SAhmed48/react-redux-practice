@@ -12,6 +12,8 @@ const unsubscribe = store.subscribe(() => {
 // api call using api middleware
 store.dispatch(apiActions.apiCallStart({
     url: '/post/list',
+    onStart: 'bugRequested',
+    onError: 'bugRequestedFailed',
     onSuccess: 'bugAdded'
 }));
 
