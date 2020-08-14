@@ -1,5 +1,6 @@
 import configureAppStore from './config';
-import {bugAdded, bugResolved, bugRemoved } from './bugs';
+import {bugAdded, bugResolved, bugRemoved, 
+        getUnresolvedBugs, getBugById } from './bugs';
 
 const store = configureAppStore();
 
@@ -46,3 +47,7 @@ console.log('Bug removed',store.getState());
 
 // avoid memory leak
 unsubscribe();
+
+
+console.log('Un resolved bug query', getUnresolvedBugs(store.getState()));
+console.log('Get BUG by ID', getBugById(store.getState(), 2));
