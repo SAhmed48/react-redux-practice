@@ -7,7 +7,7 @@ export const bugRemoved = createAction('bugRemoved');
 
 // Section B (Reducers)
 
-export default createReducer([], {
+const bugsReducer = createReducer([], {
     [bugAdded.type]: (state, action) => {
         state.push(action.payload);
     },
@@ -22,3 +22,5 @@ export default createReducer([], {
         state.filter(st => st.id !== action.payload.id);
     },
 });
+
+export default bugsReducer;
