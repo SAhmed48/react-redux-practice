@@ -33,9 +33,9 @@ export const getBugById = (state, bugID) => state.entities.bugs.filter(bug => bu
 // Memoziation
 // unresolved Bugs => get unresolved bugs from cache instead of computation everytime.
 
-// export const memUnresolvedBugs = createSelector(
-//     state => state.entities.bugs,
-//     bugs => bugs.filter(bug => !bug.resolved)
-// );
+export const memUnresolvedBugs = createSelector(
+    state => state.entities.bugs,
+    bugs => bugs.filter(bug => !bug.resolved)
+);
 
 export default bugsReducer;
