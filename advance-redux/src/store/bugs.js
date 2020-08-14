@@ -8,18 +8,24 @@ export const bugRemoved = createAction('bugRemoved');
 
 // Section B (Reducers)
 
-const bugsReducer = createReducer([], {
+const initialState = {
+    list: [],
+    loading: false,
+    lastFetch: null
+}
+
+const bugsReducer = createReducer(initialState, {
     [bugAdded.type]: (state, action) => {
-        state.push(action.payload);
+        state.list.push(...action.payload);
     },
     [bugResolved.type]: (state, action) => {
-        const index = state.indexOf(bug => {
+        const index = state.list.indexOf(bug => {
             return bug.id === action.payload.id 
         });
         // state[index].resolved = true;
     },
     [bugRemoved.type]: (state, action) => {
-        state.filter(st => st.id !== action.payload.id);
+        state.list.filter(st => st.id !== action.payload.id);
     },
 });
 

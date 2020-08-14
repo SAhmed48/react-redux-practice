@@ -1,4 +1,5 @@
 import configureAppStore from './config';
+import * as apiActions from './api';
 import {bugAdded, bugResolved, bugRemoved, 
         getUnresolvedBugs, getBugById } from './bugs';
 
@@ -9,15 +10,10 @@ const unsubscribe = store.subscribe(() => {
 });
 
 // api call using api middleware
-
-store.dispatch({
-    type: 'apiCallRequest',
-    payload: {
-        url: '/post/list',
-        onSuccess: 'bugAdded',
-        onError: 'apiRequestFailed'
-    }
-});
+store.dispatch(apiActions.apiCallStart({
+    url: '/post/list',
+    onSuccess: 'bugAdded'
+}));
 
 // add bug action
 // store.dispatch(bugAdded({
