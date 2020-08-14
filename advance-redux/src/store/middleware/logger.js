@@ -1,4 +1,4 @@
-export const loggerMiddleware = store => next => action => {
-    console.log('action', action);
+export const loggerMiddleware = param => store => next => action => {
+    console.log('Logging Type', param); // custom parameter for logging type
     next(action);
 };

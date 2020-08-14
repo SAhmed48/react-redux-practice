@@ -19,7 +19,6 @@ const bugsReducer = createReducer([], {
         // state[index].resolved = true;
     },
     [bugRemoved.type]: (state, action) => {
-        console.log(action.payload);
         state.filter(st => st.id !== action.payload.id);
     },
 });

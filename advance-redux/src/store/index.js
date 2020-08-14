@@ -6,7 +6,6 @@ const store = configureAppStore();
 
 const unsubscribe = store.subscribe(() => {
     // Subscription of store change to update UI
-    console.log('Store Changed', store.getState());
 });
 
 // add bug action
