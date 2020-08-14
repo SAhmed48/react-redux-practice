@@ -31,8 +31,7 @@ console.log('Bug Added',store.getState());
 
 // BUG resolved 
 store.dispatch(bugResolved({
-    id: 1,
-    description: 'BUG 1'
+    id: 1
 }));
 
 console.log('Bug Resolved',store.getState());
