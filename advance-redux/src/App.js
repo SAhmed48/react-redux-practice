@@ -2,16 +2,16 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import PostList from './components/list-post/list-post.component';
-import StoreContext from './contexts/storeContext';
 import configureAppStore from './store/config';
+import { Provider } from 'react-redux';
 
-const store = configureAppStore();
+const appStore = configureAppStore();
 
 function App() {
   return (
-    <StoreContext.Provider value={store}>
+    <Provider store={appStore}>
       <PostList />
-    </StoreContext.Provider>
+    </Provider>
   );
 }
 
